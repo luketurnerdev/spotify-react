@@ -1,21 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import Login from "./Components/Login"
+import ReactDOM from 'react-dom';
+import TopArtists from "./Components/TopArtists.jsx"
+import Login from "./Components/Login.jsx"
+import Dashboard from "./Components/Dashboard";
 import './App.css';
+import axios from 'axios';
 
-function App() {
+function LoggedStatus(props) {
+  const isLoggedIn = props.isLoggedIn;
+
+  if (isLoggedIn) {
+    return <Dashboard />
+  } 
+  return <Login />
+}
+
+function App(props) {
+
   return (
     <>
-    <div className="App">
-      <header className="App-header">
-        <img src="./img/spotify.png" alt="spotify-logo"></img>
-        <h1>Spotify App</h1>
-        <Login />
-      </header>
-    </div>
-
+      <LoggedStatus isLoggedIn= {true} />
     </>
-  );
+  )
 }
+
+
+
+
+
+// ReactDOM.render(<TopArtists/>, document.getElementById('root'));
+
 
 export default App;

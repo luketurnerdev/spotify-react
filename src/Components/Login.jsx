@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 
 class Login extends Component {
   state = {
-    logged_in: false
+    // logged_in: false
   }
 
 
   render() {
     return (
       <button>
-        <a href="http://google.com" target="_blank">
+        <a href={`http://localhost:8888/auth/login`}>
         Login with Spotify
         </a>
       </button>
