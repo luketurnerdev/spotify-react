@@ -1,4 +1,5 @@
 import React from "react";
+import Playlists from "./../pages/Playlists";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +27,7 @@ import {
 
                   <Switch>
                       <Route path="/playlists">
-                        <h1>Playlist component</h1>
+                        <Playlists/>
                       </Route>
                       <Route path="/user">
                         <h1>User component</h1>
