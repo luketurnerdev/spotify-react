@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {Typography, Grid} from '@material-ui/core'
+import styles from "./style";
 
 const PlaylistCard = (props) => {
   const {playlistTitle, trackAmount} = props;
   return (
-    <div>
+    <div style = {styles.playlistCard}>
       <Typography variant="h5">
           Title: {playlistTitle}
       </Typography>

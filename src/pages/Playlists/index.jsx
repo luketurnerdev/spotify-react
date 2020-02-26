@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import PlaylistCard from "./../Components/PlaylistCard";
+import PlaylistCard from "../../Components/PlaylistCard";
+import styles from "./styles";
 
 import {Typography, Grid} from '@material-ui/core'
 
@@ -10,8 +11,8 @@ const Playlists = () => {
     {title: "Second one", trackAmount: 8},
     {title: "Third one", trackAmount: 4},
     {title: "Fourth one", trackAmount: 4},
-    {title: "Fourth one", trackAmount: 4},
-    {title: "Fourth one", trackAmount: 4},
+    {title: "Fifth one", trackAmount: 4},
+    {title: "Sixth one", trackAmount: 4},
   ]
   
   return (
@@ -26,14 +27,14 @@ const Playlists = () => {
         justify="space-around"
         alignItems="center"
         >
-        {testPlaylistObject.map(playlist => {
+        {testPlaylistObject.map((playlist, index) => {
           return  (
-            <Grid item xs={4}>
-              <PlaylistCard
+            <Grid item xs={4} className={styles.playlistGrid}>
+            <PlaylistCard
               playlistTitle={playlist.title}
               trackAmount={playlist.trackAmount}
             />
-            </Grid>
+        </Grid>
           )
         })}
         </Grid>

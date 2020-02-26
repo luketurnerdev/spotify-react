@@ -1,5 +1,5 @@
 import React from "react";
-import Playlists from "./../pages/Playlists";
+import Playlists from "../pages/Playlists";
 import {
   BrowserRouter as Router,
   Switch,
