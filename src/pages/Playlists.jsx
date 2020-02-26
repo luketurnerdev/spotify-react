@@ -9,6 +9,9 @@ const Playlists = () => {
     {title: "First one", trackAmount: 5},
     {title: "Second one", trackAmount: 8},
     {title: "Third one", trackAmount: 4},
+    {title: "Fourth one", trackAmount: 4},
+    {title: "Fourth one", trackAmount: 4},
+    {title: "Fourth one", trackAmount: 4},
   ]
   
   return (
@@ -24,10 +27,14 @@ const Playlists = () => {
         alignItems="center"
         >
         {testPlaylistObject.map(playlist => {
-          return  <PlaylistCard
-            playlistTitle={playlist.title}
-            trackAmount={playlist.trackAmount}
-          />
+          return  (
+            <Grid item xs={4}>
+              <PlaylistCard
+              playlistTitle={playlist.title}
+              trackAmount={playlist.trackAmount}
+            />
+            </Grid>
+          )
         })}
         </Grid>
       </div>
