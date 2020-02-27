@@ -1,5 +1,6 @@
 import React from "react";
 import Playlists from "../pages/Playlists";
+import Login from "../pages/Login"
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,9 @@ import {
                           <li>
                               <Link to="/user">User</Link>
                           </li>
+                          <li>
+                              <Link to="/login">Login</Link>
+                          </li>
                       </ul>
                   </nav>
 
@@ -31,6 +35,9 @@ import {
                       </Route>
                       <Route path="/user">
                         <h1>User component</h1>
+                      </Route>
+                      <Route path="/login">
+                        <Login/>
                       </Route>
                       <Route path="/">
                         <h1>Home component</h1>
