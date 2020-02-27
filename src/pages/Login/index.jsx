@@ -5,7 +5,14 @@ import {Typography, Grid, Button} from '@material-ui/core'
 
 const spotifyLoginRedirect = () => {
     //  Get request to {backend_url}/auth/login
-    alert(process.env.REACT_APP_BACKEND_API)
+    // Are you sure? If yes, then...
+    axios.get(process.env.REACT_APP_BACKEND_API)
+    .then(resp => {
+        alert(resp.data);
+    })
+    .catch(err => {
+        alert(err);
+    })
 }
 
 const Login = () => {
