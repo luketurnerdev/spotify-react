@@ -6,13 +6,18 @@ import {Typography, Grid, Button} from '@material-ui/core'
 const spotifyLoginRedirect = () => {
     //  Get request to {backend_url}/auth/login
     // Are you sure? If yes, then...
-    axios.get(process.env.REACT_APP_BACKEND_API)
+
+    let url = "";
+    axios.get(`${process.env.REACT_APP_BACKEND_API}/auth/login`)
     .then(resp => {
-        alert(resp.data);
+        url = resp.data;
+        console.log(url);
     })
     .catch(err => {
-        alert(err);
+        // alert(err);
+        console.log(err);
     })
+    window.location.href = url;
 }
 
 const Login = () => {
