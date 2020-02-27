@@ -34,6 +34,7 @@ const Playlists = () => {
               playlistTitle={playlist.title}
               trackAmount={playlist.trackAmount}
             />
+            
         </Grid>
           )
         })}

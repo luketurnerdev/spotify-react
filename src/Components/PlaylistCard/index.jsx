@@ -1,8 +1,25 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import {Typography, Grid} from '@material-ui/core'
+import {Typography, Grid, Button} from '@material-ui/core'
 import styles from "./style";
+
+const deletePlaylist = () => {
+  alert('Are you sure?');
+}
+
+const DeleteButton = () => {
+  return(
+    <Button 
+    variant="contained" 
+    color="secondry"
+    onClick={deletePlaylist}
+    >
+      Delete
+    </Button>
+  )
+}
+
 
 const PlaylistCard = (props) => {
   const {playlistTitle, trackAmount} = props;
@@ -14,6 +31,7 @@ const PlaylistCard = (props) => {
       <Typography variant="h6">
           {trackAmount} tracks
       </Typography>
+      <DeleteButton/>
     </div>
     )
 }
