@@ -7,17 +7,24 @@ const spotifyLoginRedirect = () => {
     //  Get request to {backend_url}/auth/login
     // Are you sure? If yes, then...
     
-    let url = "";
+    
     axios.get(`${process.env.REACT_APP_BACKEND_API}/auth/login`)
+    // .then(resp => {
+    //     // let {redirectURL} = resp.data;
+    //     console.log(resp.data);
+    //     // window.location.href = redirectURL;
+    // })
     .then(resp => {
-        // url = resp.data;
-        console.log(url);
+         let {redirectURL} = resp.data;
+        // console.log(resp);
+        window.location.href = redirectURL;
     })
     .catch(err => {
-        // alert(err);
+        alert(err);
         console.log(err);
     })
-    // window.location.href = url;
+
+    
 }
 
 const Login = () => {
