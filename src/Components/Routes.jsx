@@ -1,6 +1,7 @@
 import React from "react";
 import Playlists from "../pages/Playlists";
 import Login from "../pages/Login"
+import Home from "../pages/Home/index"
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +41,7 @@ import {
                         <Login/>
                       </Route>
                       <Route path="/">
-                        <h1>Home component</h1>
+                        <Home />
                       </Route>
                   </Switch>
               </div>
