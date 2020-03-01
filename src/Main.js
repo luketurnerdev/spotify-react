@@ -6,6 +6,7 @@ const Main = () => {
 
   return(
       <div>
+        <h1>{document.cookie.accessToken}</h1>
         <h1>{userInfo.userID}</h1>  
         <h1>{userInfo.accessToken}</h1>  
       </div>

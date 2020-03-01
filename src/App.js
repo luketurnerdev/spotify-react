@@ -2,6 +2,7 @@ import React from 'react';
 import Routes from "./Components/Routes";
 import UserContext from "./UserContext";
 import Main from "./Main";
+import Cookies from 'js-cookie';
 import './App.css';
 import axios from 'axios';
 
@@ -12,8 +13,8 @@ function App() {
   return (
     <>
         <UserContext.Provider value = {{
-          userID: 123,
-          accessToken: 567,
+          userID: Cookies.get('userID'),
+          accessToken: Cookies.get('accessToken'),
         }}>
           <div>
             <Main/>
