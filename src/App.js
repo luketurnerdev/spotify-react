@@ -1,25 +1,24 @@
 import React from 'react';
 import Routes from "./Components/Routes";
+import UserContext from "./UserContext";
+import Main from "./Main";
 import './App.css';
 import axios from 'axios';
 
-const UserContext = React.createContext({
-  userID: null,
-  accessToken: null,
-})
+function App() {
+  
+  const theme = "light";
 
-function App(props) {
-  
-  const [theme, setTheme] = React.useState("red");
-  
-  const onClickHandler = () => {
-    setTheme(theme === "red" ? "blue" : "red")
-  }
   return (
     <>
-        <Text theme={theme}/>
-          <button onClick={onClickHandler}>Theme</button>
-
+        <UserContext.Provider value = {{
+          userID: 123,
+          accessToken: 567,
+        }}>
+          <div>
+            <Main/>
+          </div>
+        </UserContext.Provider>
         
          <Routes/>
     </>
