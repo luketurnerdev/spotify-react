@@ -3,7 +3,7 @@ import Routes from "./Components/Routes";
 import UserContext from "./UserContext";
 import Cookies from 'js-cookie';
 import './App.css';
-import Main from "./Main"
+import Main from "./Components/Main";
 import axios from 'axios';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -27,6 +27,14 @@ const hash = window.location.hash
   }, {});
 window.location.hash = "";
 
+const LoginButton = () => 
+  <a
+  className="btn btn--loginApp-link"
+  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
+  >
+    Login to Spotify
+  </a>;
+
 function App() {
   const [token, setToken] = useState('');
 
@@ -37,20 +45,8 @@ function App() {
     }
   return (
     <>
-        {/* <UserContext.Provider value = {{
-          userID: Cookies.get('userID'),
-          accessToken: Cookies.get('accessToken'),
-        }}> */}
-        {!token && <a
-          className="btn btn--loginApp-link"
-          href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
-        >
-          Login to Spotify
-        </a>}
-        <h1>{token || 'notoken'}</h1>
-        {token && <Main/>}
-         {/* <Routes/> */}
-        {/* </UserContext.Provider> */}
+        {!token && <LoginButton />}
+        {token && <Main token={token} />}
         
     </>
   )
