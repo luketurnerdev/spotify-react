@@ -13,6 +13,11 @@ const redirectUri = "http://localhost:3000/";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
+  'playlist-modify-public',
+  'user-top-read',
+  'user-read-email',
+  'user-read-private',
+  'user-read-birthdate',
 ];
 // Get the hash of the url
 const hash = window.location.hash
@@ -39,6 +44,7 @@ function App() {
   const [token, setToken] = useState('');
 
   let _token = hash.access_token;
+  console.log(hash);
     if (_token) {
       // Set token
        !token && setToken(_token);
