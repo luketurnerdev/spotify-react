@@ -55,7 +55,8 @@ function App() {
         }
     })
     //Return user profile information
-    console.log(response.data);
+    // console.log(response.data);
+    setUserData(response.data);
     return response.data;
   }
     if (_token) {
@@ -68,7 +69,7 @@ function App() {
   return (
     <>
         {!token && <LoginButton />}
-        {token && <Main token={token} />}
+        {token && <Main token={token} userData={userData} />}
         
     </>
   )
