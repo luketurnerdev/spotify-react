@@ -1,21 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Routes from "./Components/Routes";
 import UserContext from "./UserContext";
 import Cookies from 'js-cookie';
 import './App.css';
+import Main from "./Main"
 import axios from 'axios';
 
-function App() {
-  
+export const authEndpoint = 'https://accounts.spotify.com/authorize';
+// Replace with your app's client ID, redirect URI and desired scopes
+const clientId = "d9cca6b8ff4248c9a2161fd2e94bacc0";
+const redirectUri = "http://localhost:3000/";
+const scopes = [
+  "user-read-currently-playing",
+  "user-read-playback-state",
+];
+// Get the hash of the url
+const hash = window.location.hash
+  .substring(1)
+  .split("&")
+  .reduce(function(initial, item) {
+    if (item) {
+      var parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+window.location.hash = "";
 
+function App() {
+  const [token, setToken] = useState('');
+
+  let _token = hash.access_token;
+    if (_token) {
+      // Set token
+       !token && setToken(_token);
+    }
   return (
     <>
-        <UserContext.Provider value = {{
+        {/* <UserContext.Provider value = {{
           userID: Cookies.get('userID'),
           accessToken: Cookies.get('accessToken'),
-        }}>
-         <Routes/>
-        </UserContext.Provider>
+        }}> */}
+        {!token && <a
+          className="btn btn--loginApp-link"
+          href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
+        >
+          Login to Spotify
+        </a>}
+        <h1>{token || 'notoken'}</h1>
+        {token && <Main/>}
+         {/* <Routes/> */}
+        {/* </UserContext.Provider> */}
         
     </>
   )

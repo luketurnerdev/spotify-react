@@ -12,6 +12,7 @@ import {
       .then(resp => {
           console.log(resp.data)
           console.log(resp.headers)
+          res.redirect('/');
       })
       .catch(err => {
           console.log(err);
@@ -21,6 +22,5 @@ import {
   export default function Home() {
       return(
           <button onClick={receiveSpotifyData}>button</button>
-
       )
   }

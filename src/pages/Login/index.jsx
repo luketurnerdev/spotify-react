@@ -1,34 +1,44 @@
-import React, {Component, useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {Redirect, Route} from 'react-router-dom';
 import axios from 'axios';
 
 import {Typography, Grid, Button} from '@material-ui/core'
 
-const spotifyLoginRedirect = () => {
-    //  Get request to {backend_url}/auth/login
-    // Are you sure? If yes, then...
-    
-    
+const sendUserToSpotifyAuth = url => {
+    window.location.href = url;
+    }
+
+function myFunction() {
+    console.log('fucntion');
+}
+
+const Login = props => {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const {setRedirectURL} = props;
+
+    const spotifyLoginRedirect = () => {  
+
     axios.get(`${process.env.REACT_APP_BACKEND_API}/auth/login`)
     .then(resp => {
-         let {redirectURL} = resp.data;
-        // console.log(resp);
-        window.location.href = redirectURL;
+        console.log(resp.data.url);
+        sendUserToSpotifyAuth(resp.data);
+        myFunction();
+        return null;
     })
     .catch(err => {
         alert(err);
         console.log(err);
     })
 
-    
 }
-
-const Login = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
     return (
         <div>
-            <Button variant="contained"
-            onClick={spotifyLoginRedirect}
-            ><h3>Login With Spotify</h3></Button>
+            <Button variant="contained" onClick={spotifyLoginRedirect}>
+                <h3>Login With Spotify</h3>
+            </Button>
+            {/* <h1>{redirectURL || 'noURL'}</h1> */}
+        {/* <Redirect to="google.com"/> */}
+
         </div>
     )
 
