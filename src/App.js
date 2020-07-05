@@ -40,15 +40,31 @@ const LoginButton = () =>
     Login to Spotify
   </a>;
 
+
 function App() {
   const [token, setToken] = useState('');
+  const [userData, setUserData] = useState('');
 
   let _token = hash.access_token;
-  console.log(hash);
+
+  const getUserData = async (token) => {
+
+    const response = await axios.get('https://api.spotify.com/v1/me', {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    //Return user profile information
+    console.log(response.data);
+    return response.data;
+  }
     if (_token) {
       // Set token
        !token && setToken(_token);
+       getUserData(_token);
     }
+    
+
   return (
     <>
         {!token && <LoginButton />}
